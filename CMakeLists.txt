@@ -11,8 +11,30 @@ include_directories(
     ${EIGEN3_INCLUDE_DIRS}
 )
 
-# Generic library
+# Library install path
+get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+
+if ("${LIB64}" STREQUAL "TRUE")
+    set(LIBSUFFIX 64)
+else()
+    set(LIBSUFFIX "")
+endif()
+
+# Library
 add_library(gaussianmixturemodel SHARED
     gaussianmixture.cpp
     gaussianmixture_c.cpp
+)
+set_target_properties(gaussianmixturemodel PROPERTIES
+    VERSION 1
+    SOVERSION 1
+)
+
+install(
+    TARGETS gaussianmixturemodel
+    DESTINATION lib${LIBSUFFIX}
+)
+install(
+    FILES gaussianmixture.h
+    DESTINATION include
 )
