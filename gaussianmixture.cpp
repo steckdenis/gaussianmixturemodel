@@ -68,6 +68,11 @@ GaussianMixture::~GaussianMixture()
     }
 }
 
+int GaussianMixture::numClusters() const
+{
+    return _neurons.size();
+}
+
 void GaussianMixture::setValue(const Eigen::VectorXf &input, const Eigen::VectorXf &value)
 {
     // Maintain the min/max ranges
@@ -145,8 +150,6 @@ void GaussianMixture::setValue(const Eigen::VectorXf &input, const Eigen::Vector
             --len;
         }
     }
-
-    std::cout << _neurons.size() << std::endl;
 }
 
 Eigen::VectorXf GaussianMixture::value(const Eigen::VectorXf &input,

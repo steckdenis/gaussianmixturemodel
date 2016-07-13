@@ -57,6 +57,11 @@ class GaussianMixture
          * represents.
          */
         Eigen::VectorXf value(const Eigen::VectorXf &input, float &weight) const;
+        
+        /**
+         * @brief Number of clusters in the model
+         */
+        int numClusters() const;
 
     private:
         /**

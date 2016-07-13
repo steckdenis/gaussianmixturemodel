@@ -27,8 +27,6 @@ void GaussianMixture_SetValue(GaussianMixture *m,
         Eigen::Map<Eigen::VectorXf, Eigen::Aligned>(in, inS),
         Eigen::Map<Eigen::VectorXf, Eigen::Aligned>(val, valS)
     );
-    
-    std::cout << Eigen::Map<Eigen::VectorXf, Eigen::Aligned>(in, inS).transpose() << std::endl;
 }
 
 extern "C"
@@ -43,4 +41,10 @@ void GaussianMixture_GetValue(GaussianMixture *m,
     );
     
     memcpy((void *)out, (void *)rs.data(), rs.rows() * sizeof(float));
+}
+
+extern "C"
+int GaussianMixture_NumClusters(GaussianMixture *m)
+{
+    return m->numClusters();
 }
