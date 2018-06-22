@@ -37,7 +37,7 @@ class GaussianMixture
         /**
          * @param initial_variance Initial variance of the input data (usually 0.01)
          * @param max_error Maximum error tolerated by the model, used to decide
-         *                  when to increase its precision and when to somplify it.
+         *                  when to increase its precision and when to simplify it.
          */
         GaussianMixture(unsigned int input_dim,
                 unsigned int output_dim,
